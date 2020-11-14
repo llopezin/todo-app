@@ -1,0 +1,28 @@
+<!-- EDIT mode -->
+
+<div class="container mt-2" *ngIf="isEditing">
+    <div class="row">
+        <form class="col-8" (ngSubmit)="submitTask()" [formGroup]="editTaskFrom">
+            <input type="text" name="" id="titleInput" [formControl]="titleInput" placeholder="New task title">
+            <button class="btn btn-primary ml-2" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- READ mode -->
+
+<div class="container mt-2" *ngIf="!isEditing">
+    <div class="row">
+        <div class="col-4">
+            {{todo.title}}
+        </div>
+        <div class="col-8">
+            <button (click)="completeTask()" *ngIf="!todo.completed" class="btn btn-success"
+                type="button">Completed</button>
+            <button (click)="editTask()" *ngIf="!todo.completed" class="btn btn-primary ml-2"
+                type="button">Edit</button>
+            <button (click)="deleteTask()" class="btn btn-danger ml-2" type="button">Delete</button>
+        </div>
+    </div>
+</div>
