@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducers';
+import { getAllTodos, getAllTodosError } from '../actions';
 import Todo from '../models/todo.model';
 
 @Component({
@@ -17,5 +18,6 @@ export class TodoListComponent implements OnInit {
     this.store
       .select('todosApp')
       .subscribe((todoResponse) => (this.todos = todoResponse.todos));
+    this.store.dispatch(getAllTodos());
   }
 }

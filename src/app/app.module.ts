@@ -10,6 +10,8 @@ import { TodosModule } from './todos/todos.module';
 import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { appReducers } from './app.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { EffectsArray } from './todos/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +19,7 @@ import { appReducers } from './app.reducers';
     BrowserModule,
     AppRoutingModule,
     TodosModule,
+    EffectsModule.forRoot(EffectsArray),
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

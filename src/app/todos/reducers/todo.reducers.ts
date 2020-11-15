@@ -84,7 +84,11 @@ const _todoReducer = createReducer(
     ...state,
     loading: false,
     loaded: false,
-    error: payload,
+    error: {
+      url: payload.url,
+      status: payload.status,
+      message: payload.message,
+    },
   }))
 );
 
